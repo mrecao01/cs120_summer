@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JS Basics</title>
+</head>
+
+<body>
+    <script>
+
+        alert("I will ask you for two numbers, then check the console in inspect mode")
+
+        function validNumber() {
+            let number = parseFloat(prompt("Enter a number:",""));
+            while (isNaN(number)){
+                alert("Please enter a valid number");
+                number = parseFloat(prompt("Enter a number:",""));
+            }
+            return parseFloat(number.toFixed(2));
+        }
+
+        let number1 = validNumber();
+        let number2 = validNumber();
+
+        if(number1>number2){
+            console.log(number2);
+            console.log(number1);
+            console.log("Sorted them for ya :)");
+        }
+        else{
+            console.log(number1);
+            console.log(number2);
+            console.log("Sorted them for ya :)");
+        }
+
+    </script>
+</body>

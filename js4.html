@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JS Basics</title>
+</head>
+
+<body>
+    <script>
+        function validNumber() {
+            let number = parseFloat(prompt("Enter a number:",""));
+            while (isNaN(number)){
+                alert("Please enter a valid number");
+                number = parseFloat(prompt("Enter a number:",""));
+            }
+            return parseFloat(number.toFixed(2));
+        }
+
+        let number1 = validNumber();
+        let number2 = validNumber();
+
+        let min_num = Math.min(number1, number2);
+        let max_num = Math.max(number1, number2);
+
+        let sum = 0;
+        let odd_numbers = "";
+
+        for (i=min_num; i<=max_num; i++){
+            sum+=i;
+            if(i%2 !== 0){
+                odd_numbers += i + " ";
+            }
+        }
+
+        document.write("Odd numbers in range: " + odd_numbers + "<br>");
+        document.write("Sum of numbers in range: " + sum);
+
+    </script>
+</body>

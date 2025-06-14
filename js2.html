@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JS Basics</title>
+</head>
+
+<body>
+    <script>
+        
+        let farenheit = parseFloat(prompt("Enter a temperature value in degrees Farenheit",""))
+
+        while (isNaN(farenheit)) {
+            alert("Please enter a number")
+            farenheit = parseFloat(prompt("Enter a temperature value in degrees Farenheit",""))
+        }
+
+        let conversion_to_celcius = (farenheit - 32) * (5/9)
+        conversion_to_celcius = parseFloat(conversion_to_celcius.toFixed(2))
+
+        alert(farenheit + " degrees Farenheit equal to " + conversion_to_celcius + " degrees Celcius")
+
+        let celcius = parseFloat(prompt("Enter a temperature value in degrees Celcius",""))
+
+        while (isNaN(celcius)) {
+            alert("Please enter a number")
+            celcius = parseFloat(prompt("Enter a temperature value in degrees Celcius",""))
+        }
+
+        let conversion_to_farenheit = (celcius * (9/5)) + 32
+        conversion_to_farenheit = parseFloat(conversion_to_farenheit.toFixed(2))
+
+        alert(celcius + " degrees Celcius equal to " + conversion_to_farenheit + " degrees Farenheit")
+
+    </script>
+</body>
