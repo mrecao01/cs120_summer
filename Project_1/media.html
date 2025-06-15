@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Success band</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="home_page_style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap" rel="stylesheet">
+</head>
+
+
+<style>
+    #home{
+        position:fixed;
+        top: 30px;
+        left: 50px;
+        height: 50px;
+    }
+
+    #column{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-top: 120px;
+    }
+
+    #block{
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    #images{
+        height: 200px;
+        width: 100%;
+        border-radius: 10px;
+    }
+        
+    #group{
+        height: 240px;
+        width: auto;
+        border-radius: 10px;
+    }
+
+    @media (max-width: 1000px){
+        body{
+            margin:0;
+            padding:0;
+            overflow-x: hidden; /*Gets rid of tiny horizontal scroll*/
+        }
+
+        #home{ /*Make home icon smaller and lower positioned in mobile screen*/
+            position:fixed;
+            top: 83px;
+            left: 30px;
+            height: 30px;
+            z-index: 99999; /*Bringing home icon in front of header space for it to be clickable*/
+        }
+
+        header{
+            z-index: 9999; /*Brings item to front in tinier screens*/
+            background-color: aliceblue;
+            top: 0%;
+        }
+
+        footer{
+            z-index: 9999; /*Brings item to front in tinier screens*/
+            bottom:0%;
+            background-color: aliceblue;
+        }
+
+        #main_content {
+            display: flex;             
+            flex-direction: column; /*All items get a vertical order for smaller screens*/
+            width: 100%;
+            max-width: 100%;
+            margin-top: 80px;
+        }
+
+        #block{
+            flex-direction: column;
+        }
+
+        #images{
+            width: 70vw;
+            height: auto;
+        }
+
+        #group{
+             width: 70vw;
+            height: auto;
+        }
+    }
+
+
+</style>
+
+<body>
+
+    <a href="http://127.0.0.1:3000/home_page.html">
+        <img id="home" src="images/home.svg" alt = "Home">
+    </a>
+
+    <header>The Success*</header>
+
+    <footer>*NYC's favorite band</footer>
+
+    <div id = "column">
+
+        <div id = "block">
+            <img id ="images" src="images/rodneys1.jpg" alt="Band Performing and Playing Music">
+            <img id ="images" src="images/rodneys5.jpg" alt="Band Performing and Playing Music">
+        </div>
+
+        <img id ="group" src="images/success1.jpg" alt="Classy Stylish Men">
+
+        <div id = "block">
+            <img id ="images" src="images/rodneys4.jpg" alt="Band Performing and Playing Music">
+            <img id ="images" src="images/rodneys3.jpg" alt="Band Performing and Playing Music">
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,146 @@
+body{
+    background-image: url("images/background-wall.jpg");
+}
+
+header{
+    font-family: 'Bungee', sans-serif; color: rgba(155, 28, 28, 0.836);
+    position: fixed;
+    width: 100%;
+    top: 3%;
+    text-align: center;
+    font-size: 350%;
+    z-index: -1; /*Allows for fixed text to hide behind objects*/
+}
+
+footer{
+  font-family: "Bakbak One", sans-serif;
+  text-align: center;
+  color:rgba(155, 28, 28, 0.836);
+  bottom: 5%;
+  width: 100%;
+  position: fixed;
+  font-size: 150%;
+  z-index: -1; /*Allows for fixed text to hide behind objects*/
+}
+
+#main_content{
+    align-items: center;
+    display: flex;
+    padding: 135px 0px 130px 0px;
+    justify-content: space-around;
+}
+
+ul{
+    padding: 0
+}
+
+li{
+    font-family: "Bakbak One", sans-serif;
+    border: solid;
+    background-color:rgba(155, 28, 28, 0.836);
+    color:aliceblue;
+    list-style: none;
+    text-align: center;
+    padding: 12px;
+    font-size: 28px;
+    margin-bottom: 80px;
+    margin-top: 80px;
+}
+
+a{
+  color:aliceblue;
+  text-decoration: none; 
+}
+
+#home_picture{
+    max-width: 50%;
+    max-height: 100%;
+}
+
+#show_dates{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+h2{
+    font-family: "Bakbak One", sans-serif;
+    font-weight: normal; /*h2 is by default bolder, matching it to my other items*/
+    border: solid;
+    background-color:rgba(155, 28, 28, 0.836);
+    color:aliceblue;
+    text-align: center;
+    padding: 12px;
+    font-size: 28px;
+}
+
+table{
+    height: 300px;
+    font-size: 20px;
+    text-align: center;
+    border: 5px solid rgba(155, 28, 28, 0.836);
+    border-collapse: collapse;
+}
+
+th, td , tr{
+    border: 3px solid rgba(155, 28, 28, 0.836); 
+    font-family: "Bakbak One", sans-serif;
+    padding: 10px;
+    text-align: center;
+}
+
+@media (max-width: 1000px){
+
+    body{
+        margin:0;
+        padding:0;
+        overflow-x: hidden; /*Gets rid of tiny horizontal scroll*/
+    }
+
+    header{
+        z-index: 9999; /*Brings item to front in tinier screens*/
+        background-color: aliceblue;
+        top: 0%;
+    }
+
+    footer{
+        z-index: 9999; /*Brings item to front in tinier screens*/
+        bottom:0%;
+        background-color: aliceblue;
+    }
+
+    /*Widths at 100% ensure items extend across entire screen in smaller devices*/
+
+    #main_content {
+        display: flex;             
+        flex-direction: column; /*All items get a vertical order for smaller screens*/
+        width: 100%;
+        max-width: 100%;
+        margin-top: 10px;
+    }
+
+    ul{
+        width: 100%
+    }
+
+    li {
+        width: 100%;
+        margin: 0px;
+    }
+
+    #home_picture {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #show_dates, h2{
+        width: 100%;
+    }
+
+    table {
+        width: 100%;
+    }
+
+}

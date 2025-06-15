@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Success band</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap" rel="stylesheet">
+</head>
+
+
+
+<style>
+    body{
+        background-image: url("images/background-wall.jpg");
+    }
+
+    header{
+        font-family: 'Bungee', sans-serif; color: rgba(155, 28, 28, 0.836);
+        position: fixed;
+        width: 100%;
+        top: 3%;
+        text-align: center;
+        font-size: 350%;
+    }
+
+    #home{
+        position:fixed;
+        top: 30px;
+        left: 50px;
+        height: 50px;
+        z-index: 99999; /*Bringing home icon in front of header space for it to be clickable*/
+    }
+
+    footer{
+        font-family: "Bakbak One", sans-serif;
+        text-align: center;
+        color:rgba(155, 28, 28, 0.836);
+        bottom: 5%;
+        width: 100%;
+        position: fixed;
+        font-size: 150%;
+    }
+
+    #main_content{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 130px;
+        margin-bottom: 110px;
+        /*padding: 130px 0px 180px 0px;*/
+    }
+
+    #description{
+        text-align: center;
+        font-family: "Bakbak One", sans-serif;
+        align-items: center;
+        font-size: 28px;
+    }
+
+    .form_row{
+        display: flex; /*Allows for items (label+input) to be side-to-side and aligned*/
+        align-items: right
+    }
+
+    .form_label{
+        font-family: "Bakbak One", sans-serif;
+        font-size:20px;
+        width: 100px;
+        text-align: right;
+        margin-right: 10px
+    }
+
+    .form_input {
+        width: 400px
+    }
+
+    @media(max-width: 1000px){
+        body{
+            margin:0;
+            padding:0;
+            overflow-x: hidden; /*Gets rid of tiny horizontal scroll*/
+        }
+
+        #home{ /*Make home icon smaller and lower positioned in mobile screen*/
+            position:fixed;
+            top: 83px;
+            left: 30px;
+            height: 30px;
+            z-index: 99999; /*Bringing home icon in front of header space for it to be clickable*/
+        }
+
+        header{
+            z-index: 9999; /*Brings item to front in tinier screens*/
+            background-color: aliceblue;
+            top: 0%;
+        }
+
+        footer{
+            z-index: 9999; /*Brings item to front in tinier screens*/
+            bottom:0%;
+            background-color: aliceblue;
+        }
+
+        #main_content {
+            display: flex;             
+            flex-direction: column; /*All items get a vertical order for smaller screens*/
+            width: 100%;
+            max-width: 100%;
+            margin-top: 80px;
+        }
+
+        form {
+            width: 50%;
+        }
+
+        .form_row {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .form_label {
+            text-align: left;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .form_input,
+        select {
+            width: 100%;
+            font-size: 16px;
+        }
+
+    }
+
+</style>
+
+<body>
+
+    <a href="http://127.0.0.1:3000/home_page.html">
+        <img id="home" src="images/home.svg" alt = "Home">
+    </a>
+
+    <header>The Success*</header>
+
+    <div id="main_content">
+
+    <p id="description">Want live music at your event?<br><br>Reach out to us and let's make it happen!</p>
+
+    <form style = "border: 10px solid rgba(155, 28, 28, 0.836); padding: 50px; margin-top: 45px">
+        <div class="form_row">
+            <label class="form_label">Name:</label>
+                <input class="form_input" type="text" name="Name" id="name">
+        </div>
+        <br>
+        <div class="form_row">
+            <label class="form_label">Date:</label>
+             <input class="form_input" type="date" name="Date" id="date">
+        </div>
+        <br>
+        <div class="form_row">
+            <label class="form_label">Occasion:</label>
+                <input class="form_input" type="text" name="occasion" id="occasion">
+        </div>
+        <br>
+        <div class="form_row">
+            <label class="form_label">Crowd size (estimate):</label>
+                <select name = "crowd_size">
+                    <option value = "1-20">1-20</option>
+                    <option value = "20-50">20-50</option>
+                    <option value = "50-100">50-100</option>
+                    <option value = "100-200">100-200</option>
+                    <option value = "200+">200+</option>
+                </select>
+        </div>
+        <br>
+        <br>
+        <div class="form_row">
+            <div class="form_label"></div>
+                <input type="submit" value="Submit" style="font-size: 18px; font-family: Bakbak One, sans-serif;">
+    </div>
+    </form>
+
+    </div>
+
+    <footer>*NYC's favorite band</footer>
+
+</body>
+</html>
