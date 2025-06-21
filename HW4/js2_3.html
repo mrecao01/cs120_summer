@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JS2_3</title>
+</head>
+
+<body>
+
+<script>
+
+let names = prompt("Enter several names separated by a comma", "");
+
+names = names.replace(", ",","); //If user inputs names separated by a comma + single space, replace to just a comma
+
+names = names.split(","); //Split names into an array using "," as the separator
+
+names = names.map(function(name){
+    return "<li>" + name + "</li>"
+})
+
+names = "<ol>" + names.join("<br>") + "</ol>" //join("<br>") used to separate each list item with a space. A comma was used as default.
+
+</script>
+
+<div id="answer">
+
+<script>
+
+    document.getElementById("answer").innerHTML = names;
+
+</script>
+
+</div>

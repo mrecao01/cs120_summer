@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JS2_1</title>
+</head>
+
+<body>
+
+<!-- Part A -->
+
+    <script>
+
+    alert("Input how many numbers you want separated by a single space")
+
+    function count(array, value){
+
+        array = prompt("Enter a set of whole numbers:", "")
+        if(array.includes("  ")){ //Checks if user input more than a single space
+            alert("Please input only one space between numbers.")
+            array = prompt("Enter a set of whole numbers:", "")
+        }
+
+        array = array.split(" ").map(function(number){
+            return parseInt(number);
+        })
+
+        value = parseInt(prompt("Now enter one whole number. Any number"))
+        if(isNaN(value)){ //Checks if user input is not a number
+            alert("Please enter a valid whole number.")
+            value = parseInt(prompt("Now enter one whole number. Any number"))
+        }
+
+        let count = 0;
+
+        for(let i=0; i<array.length; i++){
+            if (array[i] < value){
+                count +=1;
+            }
+        }
+        return count
+    }
+
+    </script>
+
+<!-- Part B -->
+
+<div id = "answer">
+
+    <script>
+        
+        function testCount(){
+            let result = count();
+            document.getElementById("answer").innerHTML = "Amount of numbers in array lower than your value: " + result;
+        }
+
+        testCount();
+
+    </script>
+
+</div>
+
+
+
+</body>
+</html>

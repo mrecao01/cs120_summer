@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JS2_6</title>
+</head>
+
+<body>
+
+<script>
+
+let state_options = ["MA", "NY", "CT", "NJ", "RI", "NH", "VT", "PA", "DC", "FL", "CA", "GA", "IN", "OH"]
+
+let state_list = state_options.map(function(state, index){
+    if (index === 0) {
+    return "<option value='" + state + "' selected>" + state + "</option>"; //First state always selected
+    } 
+    else {
+        return "<option value='" + state + "'>" + state + "</option>";
+    }
+}).join("") //used to avoid default comma separator
+
+state_list = "<select type='list' size='10' id='states'>" + state_list + "</select>" 
+
+</script>
+
+<div id="list"></div>
+
+    <script>
+
+        document.getElementById("list").innerHTML = state_list;
+
+    </script>
+
+    <button id="add">Add State</button>
+
+</div>
+
+<br><br><br>
+<button id="clear">Clear States</button>
+<div id="answer" style= "border: solid black">
+
+</div>
+
+<script> //Define add and clear functions that tweak div sections above
+
+    window.onload = function(){
+        document.getElementById("add").onclick = add;
+        document.getElementById("clear").onclick = clear;
+    };
+
+    function add(){
+        let selected_state = document.getElementById("states");
+        selected_state = selected_state.value;
+        document.getElementById("answer").innerHTML += selected_state +"<br>"
+    };
+
+    function clear(){
+        document.getElementById("answer").innerHTML = "";
+    };
+
+</script>
+
+
+
+

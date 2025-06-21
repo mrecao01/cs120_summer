@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JS2_5</title>
+</head>
+
+<body>
+
+<form>
+
+    <input type="text" name="Name" id = "name"> <br><br>
+    <input type="button" value="Hello" id="Hello"> <br><br>
+    <input type="button" value="Goodbye" id="Goodbye"> <br><br>
+    <input type="button" value="Greetings" id="Greetings"> <br><br>
+
+
+</form>
+
+<script>
+
+    window.onload = function(){
+        
+        document.getElementById("Hello").onclick = speak;
+        document.getElementById("Goodbye").onclick = speak;
+        document.getElementById("Greetings").onclick = speak;
+    
+    };
+
+    function speak(){
+        let name = document.getElementById("name").value;
+        let prefix = this.value //"this" is the value of the clicked button, as referred in the function() above
+        alert(prefix + " " + name);
+    } ;
+
+</script>
