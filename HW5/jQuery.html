@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery Practice</title>
+</head>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<script>
+
+    function GalleryItem(name, price, thumbnail_image, large_image){
+        this.name = name;
+        this.price = price;
+        this.thumbnail_image = thumbnail_image;
+        this.large_image = large_image;
+    }
+
+    let gallery = [
+
+    new GalleryItem("Mona Lisa", "$1000", "images/Mona_Lisa.jpg", "images/Mona_Lisa.jpg"),
+    new GalleryItem("The Great Wave off Kanagawa", "$800","images/The_Wave.jpg","images/The_Wave.jpg"),
+    new GalleryItem("Portrait of Madame X", "$600","images/Madame_X.jpg","images/Madame_X.jpg"),
+    new GalleryItem("Las Meninas", "$950","images/Las_Meninas.jpg","images/Las_Meninas.jpg"),
+    new GalleryItem("American Gothic", "$700","images/American_Gothic.jpg","images/American_Gothic.jpg"),
+
+    ]
+
+</script>
+
+<script>
+
+    //jQuery script to populate first HTML section with five thumbnails
+
+    $(document).ready(function(){
+        $.each(gallery,function(i, painting){
+            let thumbnail = $('<img>').attr('src',painting.thumbnail_image).attr('data-index',i).css({width: '100px', margin: '5px'});
+            $('#thumbnails').append(thumbnail);
+        });
+    });
+
+</script>
+
+<script>
+
+    //jQuery script to display large image in second HTML section when hover over thumbnail in first section. Image to fade in 2 seconds
+
+    $(document).ready(function(){
+        $('#thumbnails').on('mouseenter','img',function(){
+            let i = $(this).data('index'); // Collects the 'data-index' assigned when creating the thumbnail images above. The index i originates from the $.each loop
+
+            $('#large_image').fadeOut(500, function(){ //Existing large image fades out, then fade in is called
+                $(this).attr('src', gallery[i].large_image).fadeIn(1500).css('width','40%');
+            });
+        });
+    });
+
+</script>
+
+<script>
+
+    //jQuery script to display thumbnail information (once clicked) in third HTML section. Hide information after 4 seconds
+
+    $(document).ready(function(){
+
+        let info_4sec; //Declaring timer for local use later
+
+        $('#thumbnails').on('click','img',function(){
+            let i = $(this).data('index');
+            let painting = gallery[i];
+            let info = `Title: ${painting.name}<br>Price: ${painting.price}`;
+            $('#information').html(info).show()
+
+            clearTimeout(info_4sec); //Clearing any running timer upon new click
+
+            info_4sec = setTimeout(function(){ //Defining timer of 4sec info view and a short fade out after
+                $('#information').fadeOut(500);
+            },4000);
+        });
+    });
+
+</script>
+
+
+
+<body>
+
+    <div id = "thumbnails" style = "text-align: center;">
+
+    </div>
+
+    <br>
+    <br>
+
+    <div style = "text-align: center;">
+        <img id = "large_image">
+    </div>
+
+    <br>
+    <br>
+
+    <div id = "information" style = "text-align: center;">
+        
+    </div>
+
+</body>
+
+</html>
