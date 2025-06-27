@@ -50,7 +50,7 @@
             let i = $(this).data('index'); // Collects the 'data-index' assigned when creating the thumbnail images above. The index i originates from the $.each loop
 
             $('#large_image').fadeOut(500, function(){ //Existing large image fades out, then fade in is called
-                $(this).attr('src', gallery[i].large_image).fadeIn(1500).css('width','40%');
+                $(this).attr('src', gallery[i].large_image).fadeIn(1500).css('height','500px');
             });
         });
     });
