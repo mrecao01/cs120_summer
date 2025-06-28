@@ -1,0 +1,57 @@
+[          
+    {
+        "title": "Turning Japanese",
+        "artist": "The Vapors",
+        "year": 1980,
+        "genre": ["new wave", "punk", "rock"]
+    },
+
+    {
+        "title": "Pink Pony Club",
+        "artist": "Chappell Roan",
+        "year": 2020,
+        "genre": ["pop"]
+    },
+
+    {
+        "title": "Slipping Through My Fingers",
+        "artist": "ABBA",
+        "year": 1981,
+        "genre": ["ballad", "pop"]
+    },
+
+    {
+        "title": "Rock The Casbah",
+        "artist": "The Clash",
+        "year": 1982,
+        "genre": ["new wave", "punk", "rock"]
+    },
+
+    {
+        "title": "Without You",
+        "artist": "Lana Del Rey",
+        "year": 2012,
+        "genre": ["alternative", "pop"]
+    },
+
+    {
+        "title": "Prayer",
+        "artist": "Madonna",
+        "year": 1989,
+        "genre": ["pop"]
+    },
+
+    {
+        "title": "Time (You and I)",
+        "artist": "Khruangbin",
+        "year": 2020,
+        "genre":["funk"]
+    },
+
+    {
+        "title": "Dog Days Are Over",
+        "artist": "Florence + The Machine",
+        "year": 2008,
+        "genre": ["rock", "alternative"]
+    }
+]

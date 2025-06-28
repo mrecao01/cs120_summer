@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JSON 2</title>
+</head>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+<body>
+
+    <script>
+
+        window.onload = function(){
+            $.get("songs.json",function(data){
+                let songs_list = "";
+
+                data.forEach(song => {
+                    songs_list +=
+                    `<strong>${song.title}</strong><br>
+                    Artist: ${song.artist}<br>
+                    Year: ${song.year}<br>
+                    Genres: ${song.genre.join(", ")}<br><br>`;
+                });
+
+                document.getElementById("output").innerHTML = songs_list;
+
+            });
+        };
+
+    </script>
+
+    <div id = "output"></div>
+
+</body>
+</html>
