@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Assignment 4 - JavaScript 2</title>
+</head>
+
+
+<script>
+
+    window.onload = function(){
+
+    flights = fetch("http://api.aviationstack.com/v1/flights?access_key=3e8f69c76e077d299d91e5b25aa09f53&limit=5")
+        .then(response => response.json()) //Takes in data into objects
+        .then(data => {
+
+            let flights_list = "";  
+
+            data.data.forEach(flight => {
+
+                flights_list +=
+                `<div>
+                    <strong>Airline: </strong> ${flight.airline.name} <strong> Flight number: </strong> ${flight.flight.iata}<br>
+                    <strong>From: </strong> ${flight.departure.airport} <strong> To: </strong> ${flight.arrival.airport}<br>
+                    <strong>Status: </strong> ${flight.flight_status}<br><br>
+                </div>`;
+            });
+    
+            document.getElementById("flights").innerHTML = flights_list
+
+        });
+
+    };
+
+</script>
+
+<body>
+
+    <h1>Flight Info</h1>
+    <div id = "flights"></div>
+
+</body>
