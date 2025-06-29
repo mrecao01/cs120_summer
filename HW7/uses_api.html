@@ -10,7 +10,7 @@
 
     window.onload = function(){
 
-    flights = fetch("http://api.aviationstack.com/v1/flights?access_key=3e8f69c76e077d299d91e5b25aa09f53&limit=5")
+    flights = fetch("https://api.aviationstack.com/v1/flights?access_key=3e8f69c76e077d299d91e5b25aa09f53&limit=5")
         .then(response => response.json()) //Takes in data into objects
         .then(data => {
 
