@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Manny's Wordle</title>
+<link rel="stylesheet" href="wordle_style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Cal+Sans&family=Cherry+Cream+Soda&family=Faustina:ital,wght@0,300..800;1,300..800&family=Wittgenstein:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bakbak+One&family=Cal+Sans&family=Faustina:ital,wght@0,300..800;1,300..800&family=Wittgenstein:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+    Manny's Wordle
+</header>
+
+
+<div style = "margin-top: 5%">
+
+<script>
+
+let five_letter_words = [
+  "apple", "brave", "charm", "dried", "eager",
+  "flame", "grape", "honey", "ideal", "jolly",
+  "knife", "lemon", "mango", "noble", "ocean",
+  "piano", "quiet", "roast", "shine", "tiger",
+  "urban", "vapor", "wheat", "xerox", "yacht",
+  "zesty", "crisp", "glide", "lucky", "spice"
+];
+
+function createCells(count){
+    for (let i=0; i < count; i++){
+        document.write('<div class = "cell bakbak_font"></div>')
+    }
+}
+
+function createRows(count) {
+    document.write('<div class = "row">');
+    createCells(count);
+    document.write('</div>');
+};
+
+for (let i = 0; i<6; i++){
+    createRows(5); //This means we are creating rows of 5 cells. We set for loop to always be 6 rows
+}
+
+</script>
+
+</div>
+
+<!--Game rows and input created below, based on logic above-->
+
+<div class = "faustina_font" style = "padding: 20px;">
+
+    Guess a word: <br>
+    <input type ="text" id="guess" style = "margin-top: 10px; width: 160px; height: 22px; background-color: rgba(255, 255, 0, 0.226)">
+    <input type = "submit" id = "submit" class = "faustina_font" style = "background-color: rgba(53, 151, 53, 0.356)">
+
+</div>
+
+<!--Letter tracking board creation below-->
+<!--Uses arrow function + .forEach-->
+
+<div id = "board"></div>
+
+<script>
+
+    let board_row1 = "QWERTYUIOP"
+    board_row1 = board_row1.split("")
+
+    let board_row2 = "ASDFGHJKL"
+    board_row2 = board_row2.split("")
+
+    let board_row3 = "ZXCVBNM"
+    board_row3 = board_row3.split("")
+
+        createRows(10);
+        createRows(9);
+        createRows(7);
+
+        //Assigning additional class to board rows for styling
+        let allRows = document.getElementsByClassName("row");
+        allRows[6].classList.add("tracker-row");
+        allRows[7].classList.add("tracker-row");
+        allRows[8].classList.add("tracker-row");
+
+        //Assign cells to fill in later with letters for tracking uses
+        let board_cells1 = allRows[6].children;
+        let board_cells2 = allRows[7].children;
+        let board_cells3 = allRows[8].children;
+
+        //Fill in cells with letters unsing arrow function + .forEach()
+        board_row1.forEach((letter, index) => {
+            allRows[6].children[index].textContent = letter;
+        });
+
+        board_row2.forEach((letter, index) => {
+            allRows[7].children[index].textContent = letter;
+        });
+
+        board_row3.forEach((letter, index) => {
+            allRows[8].children[index].textContent = letter;
+        });
+
+</script>
+
+<script>
+
+//Function to update board tracker cells with feedback from user input (green/yellow/gray)
+//Uses forEach + arrow function
+
+    function updateTracker(letter, result){
+
+        let trackerCells = [board_cells1, board_cells2, board_cells3];
+
+        trackerCells.forEach(cells => {
+            for (let i = 0; i<cells.length; i++){
+                if (cells[i].textContent == letter){
+                    if(cells[i].classList.contains("correct")){
+                        return;
+                    }
+                    else if (result == "correct"){
+                        cells[i].classList.remove("misplaced", "wrong");
+                        cells[i].classList.add("correct");
+                    }
+                    else if (result == "misplaced"){
+                        if(!cells[i].classList.contains("misplaced")){
+                        cells[i].classList.remove("wrong");
+                        cells[i].classList.add("misplaced");
+                        }
+                    }
+                    else if (result == "wrong"){
+                        if(
+                            !cells[i].classList.contains("correct") &&
+                            !cells[i].classList.contains("misplaced")
+                        ){
+                            cells[i].classList.add("wrong") 
+                        };
+                    };
+                };
+            };
+        });
+    };
+
+</script>
+
+<script>
+
+    let answer = five_letter_words[Math.floor(Math.random() * five_letter_words.length)].toUpperCase();
+    console.log("Answer:", answer); //Only web developers will cheat :)
+
+    let submit = document.getElementById("submit")
+    let guess_input = document.getElementById("guess")
+    let rows = document.getElementsByClassName("row")
+    let current_row = 0 // used to identify rows to fill via for loop / call game over
+
+    let previous_guesses = []; //Used to track guesses by user to not allow the same response more than one time
+
+    let game_over = false; //Used to identify when game has ended and stop accepting new guesses.
+
+    submit.addEventListener("click", () => {
+
+        if(game_over){
+            alert("Game over.")
+            return;
+        }
+
+        let guess = guess_input.value.toUpperCase();
+
+        if(previous_guesses.includes(guess)){
+            alert("This word has already been guessed. Please enter a new 5-letter word.")
+            return;
+        }
+
+        if (guess.length == 5) {
+            fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${guess.toLowerCase()}`)
+            .then(response => {
+                if(!response.ok){
+                    alert("Word is not valid");
+                    return;
+                }
+                else{
+                    alert("Your guess is: " + guess);
+                    previous_guesses.push(guess);
+                    
+                    //Flagging repeated letters in guess that only appear once in answer
+                    let repeatedLetters = [];
+
+                    for (let i = 0; i<guess.length; i++){
+                        let letter = guess[i]
+
+                        let guess_letterCount = 0;
+                        for (let i = 0; i<guess.length; i++){
+                            if (guess[i] == letter){
+                                guess_letterCount++;
+                            }
+                        }
+
+                        let answer_letterCount = 0;
+                        for (let i=0; i<answer.length; i++){
+                            if (answer[i] == letter){
+                                answer_letterCount++
+                            }
+                        }
+
+                        if(
+                            guess_letterCount > 1 && answer_letterCount > 0 && answer_letterCount < guess_letterCount && !repeatedLetters.includes(letter)
+                        ){
+                            repeatedLetters.push(letter);
+                        }
+                    }
+
+
+                    let row = rows[current_row];
+                    let cell = row.children;
+                    
+                    //Counters below used to alert user their response summary
+                    let correct = 0;
+                    let misplaced = 0;
+                    let wrong = 0;
+
+                    for (let i = 0; i<5; i++){
+
+                        cell[i].textContent = guess[i]
+
+                        if (guess[i] == answer[i]){
+                            correct++;
+                            cell[i].classList.add("correct");
+                            updateTracker(guess[i], "correct")
+                        }
+                        else if (answer.includes(guess[i])){
+                            misplaced++;
+                            cell[i].classList.add("misplaced");
+                            updateTracker(guess[i], "misplaced")
+                        }
+                        else {
+                            wrong++;
+                            cell[i].classList.add("wrong");
+                            updateTracker(guess[i], "wrong")
+                        }
+
+                    };
+
+                    if (guess == answer){
+                    alert("Correct! You guessed the word.")
+                    game_over = true;
+                    return;
+                    }
+                    else if (current_row==5){
+                    alert("Wrong guess.")
+                    alert("You ran out of guesses.")
+                    alert(`The word was: ${answer}`)
+                    game_over = true;
+                    return;
+                    }
+                    else{
+                        let response_summary = "";
+                        if (repeatedLetters.length > 0){
+                            response_summary = `${correct} letter(s) correct.\n${misplaced} letter(s) in wrong place.\n${wrong} letter(s) not in word.\n\nThe following letters are in the answer, but you guessed them too many times: ${repeatedLetters.join(", ")}`
+                        }
+                        else{
+                            response_summary = `${correct} letter(s) correct.\n${misplaced} letter(s) in wrong place.\n${wrong} letter(s) not in word.`
+                        }
+                    alert(response_summary)
+                    }
+                    current_row += 1;
+                }
+
+            });
+
+        } 
+        else{
+            alert("Please enter a 5-letter word.");
+            return;
+        }
+
+    });
+
+</script>
+
+</body>
