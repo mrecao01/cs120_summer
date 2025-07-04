@@ -27,6 +27,7 @@
 
 <script>
 
+//Possible answers
 let five_letter_words = [
   "apple", "brave", "charm", "dried", "eager",
   "flame", "grape", "honey", "ideal", "jolly",
@@ -36,20 +37,20 @@ let five_letter_words = [
   "zesty", "crisp", "glide", "lucky", "spice"
 ];
 
-function createCells(count){
+function createCells(count, class_type = ""){
     for (let i=0; i < count; i++){
-        document.write('<div class = "cell bakbak_font"></div>')
+        document.write(`<div class = "cell bakbak_font ${class_type}"></div>`)
     }
 }
 
-function createRows(count) {
+function createRows(count, class_type = "") {
     document.write('<div class = "row">');
-    createCells(count);
+    createCells(count, class_type);
     document.write('</div>');
 };
 
 for (let i = 0; i<6; i++){
-    createRows(5); //This means we are creating rows of 5 cells. We set for loop to always be 6 rows
+    createRows(5, "guess_cells"); //This means we are creating rows of 5 cells. We set for loop to always be 6 rows
 }
 
 </script>
@@ -276,7 +277,8 @@ for (let i = 0; i<6; i++){
 
             });
 
-        } 
+        }
+        //All of the above came from the .then() function after fetchin API. If the word is not in API dictionary, the alert below will be returned instead.
         else{
             alert("Please enter a 5-letter word.");
             return;

@@ -67,7 +67,7 @@ header{
 
 @media (max-width: 600px){
   .cell {
-    width: 40px;
+    width: 30px;
     height: 40px;
     font-size: 20px;
     margin: 1px;
@@ -78,6 +78,12 @@ header{
   }
 
   header {
-    font-size: 30px;
+    font-size: 30px
   } 
+
+  .guess_cells{
+    width:40px;
+    height:40px;
+    margin-right: 10px;
+  }
 }
