@@ -65,6 +65,7 @@ header{
   font-size: 17px;
 }
 
+/*
 @media (max-width: 600px){
   .cell {
     width: 40px;
@@ -80,4 +81,4 @@ header{
   header {
     font-size: 30px;
   } 
-}
+}*/
